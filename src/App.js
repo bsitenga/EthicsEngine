@@ -11,7 +11,7 @@ import Nav from 'react-bootstrap/Nav';
 function App() {
   return (
     <main>
-      <Navbar bg="light" variant="light">
+      <Navbar bg="light" variant="light" className="center" >
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="quiz">Quiz</Nav.Link>

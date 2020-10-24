@@ -1,0 +1,35 @@
+/* COLOR SCHEME
+Background: #FCFCFC
+Text: #142B6F
+Highlights: #FF7D8B */
+
+/* BODY */
+body {
+    
+}
+
+/* NAVBAR */
+.navbar.bg-light {
+    background-color: #FCFCFC!important;
+}
+
+
+
+.navbar-light.navbar .navbar-nav .nav-link {
+    color: #FF7D8B;
+}
+
+/* HOME */
+.home-container {
+    background-color: #FCFCFC;
+    height: calc(100vh - 69.6px);
+    overflow-y: hidden;
+    color: #142B6F;
+}
+
+.home-container .container {
+    margin-left: 20px;
+    padding-left: 10px;
+    margin-right: 20px;
+    padding-right: 10px;
+}
