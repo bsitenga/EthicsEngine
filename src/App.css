@@ -70,3 +70,9 @@ body {
 .home-container button:hover {
     background-color: #EE6C7A;
 }
+
+/* QUIZ */
+.quiz-container {
+    background-color: #FCFCFC;
+}
+
