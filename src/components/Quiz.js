@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Instructions from './Instructions.js';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -14,7 +13,7 @@ function Quiz() {
         <Row>
           <Col>
             {questionCount === 0 ?
-              <div>
+              <div className="instructions" >
                 <h4>Scenario</h4>
                 <p>
                   Suppose that an automous vehicle (AV) is driving in heavy rain when the AV suddenly detects two groups of pedestrians in its path.
@@ -28,7 +27,7 @@ function Quiz() {
                   Next, you'll indicate whether or not your decision would change if you were a passenger of the car. After answering ten questions, you'll
                   receive an analytics report that compares your decisions to those of all other participants.
                 </p>
-                <button onClick={() => setQuestionCount(1)} >Start</button>
+                <button onClick={() => setQuestionCount(1)} >Start Quiz</button>
               </div>
               :
               <div>

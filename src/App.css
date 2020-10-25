@@ -74,5 +74,31 @@ body {
 /* QUIZ */
 .quiz-container {
     background-color: #FCFCFC;
+    color: #142B6F;
 }
 
+.quiz-container .instructions {
+    margin-top: 5vh;
+}
+
+.quiz-container .instructions h4 {
+    font-size: calc(16px + 1.4vw);
+    margin-bottom: 5px;
+}
+
+.quiz-container .instructions p {
+    font-size: calc(12px + .8vw);
+}
+
+.quiz-container .instructions button {
+    font-size: calc(14px + .6vw);
+    color: #fff;
+    border: none;
+    background-color: #FF7D8B;
+    padding: calc(5px + .2vw) calc(18px + .6vw);
+    margin-top: 2vh;
+}
+
+.quiz-container .instructions button:hover {
+    background-color: #EE6C7A;
+}
