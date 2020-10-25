@@ -75,6 +75,7 @@ body {
 .quiz-container {
     background-color: #FCFCFC;
     color: #142B6F;
+    height: calc(100vh - 69.6px);
 }
 
 .quiz-container .instructions {
@@ -101,4 +102,8 @@ body {
 
 .quiz-container .instructions button:hover {
     background-color: #EE6C7A;
+}
+
+.quiz-container .question {
+    text-align: center;
 }

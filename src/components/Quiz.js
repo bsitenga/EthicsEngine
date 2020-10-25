@@ -23,15 +23,47 @@ function Quiz() {
                 </p>
                 <h4>Instructions</h4>
                 <p>
-                  You will first answer each question as an impartial judge. Imagine the scenario as if you're watching safely from a nearby sidewalk, and can control the car's decision.
+                  You will first answer each question as an impartial judge. Imagine the scenario as if you're watching safely from a nearby sidewalk, and can control what decision the car will make.
                   Next, you'll indicate whether or not your decision would change if you were a passenger of the car. After answering ten questions, you'll
                   receive an analytics report that compares your decisions to those of all other participants.
                 </p>
                 <button onClick={() => setQuestionCount(1)} >Start Quiz</button>
               </div>
               :
-              <div>
-                Question {questionCount} / 10
+              <div className="question">
+                <h4>Question {questionCount} / 10</h4>
+                <Row>
+                  <Col>
+                    <h6>As a bystander, should the car</h6>
+                  </Col>
+                </Row>
+                <Row className="first-question" >
+                  <Col>
+                    Drive straight and hit 3 pedestrians
+                  </Col>
+                  <Col>
+                    Or
+                  </Col>
+                  <Col>
+                    Swerve and hit 3 other pedestrians
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <h6>As a passenger, should the car</h6>
+                  </Col>
+                </Row>
+                <Row className="second-question">
+                  <Col>
+                    Drive straight hit 3 pedestrians
+                  </Col>
+                  <Col>
+                    Or
+                  </Col>
+                  <Col>
+                    Swerve and hit 3 other pedestrians
+                  </Col>
+                </Row>
                 {questionCount !== 10 ?
                   <button onClick={() => setQuestionCount(questionCount + 1)} >Next</button>
                   :
