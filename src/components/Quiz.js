@@ -6,11 +6,11 @@ import Col from 'react-bootstrap/Col';
 
 function Quiz() {
   const [questionCount, setQuestionCount] = useState(0);
-  const [answers, setAnswers] = useState([]);
-  const [util, setUtil] = useState(0);
-  const [action, setAction] = useState(0);
-  const [known, setKnown] = useState(0);
-  const [pedestrians, setPedestrians] = useState(0);
+  const [answers, setAnswers] = useState([-1, -1]);
+  const [util, setUtil] = useState([0, 0]);
+  const [action, setAction] = useState([0, 0]);
+  const [known, setKnown] = useState([0, 0]);
+  const [pedestrians, setPedestrians] = useState([0, 0]);
 
   const scenarios = require('./data/Scenarios.js')
 
@@ -38,11 +38,26 @@ function Quiz() {
                   Next, you'll indicate whether or not your decision would change if you were a passenger of the car. After answering ten questions, you'll
                   receive an analytics report that compares your decisions to those of all other participants.
                 </p>
+                <h4>What's Being Measured?</h4>
+                <p>
+                  Action vs. Inaction - It's important to make the distinction between staying the course and swerving. By swerving, you're taking action by driving into the other pedestirans.
+                  By staying in your lane, you're choosing inaction by driving into the pedestrians already in your way.
+                </p>
+                <p>
+                  Saving More vs. Saving Less - This will measure how heavily you prefer saving more lives over all else.
+                </p>
+                <p>
+                  Pedestrians vs. Passengers - Some scenarios will feature a choice between hitting a group of pedestrians or sacrificing the passengers by hitting a barrier. These scenarios will 
+                  measure your preference for which group you'd rather save.
+                </p>
+                <p>
+                  Known vs. Unknown - Other scenarios will feature a choice between hitting a known number of pedestrians, or moving into an opposite lane with an unkown number of pedestrians, if any.
+                </p>
                 <button onClick={() => setQuestionCount(1)} >Start Quiz</button>
               </div>
               :
               <div className="question">
-                <h4>Question {questionCount} / 10</h4>
+                <h4>Question {questionCount}/10</h4>
                 <p className="extra-info" >Scenario Info</p>
                 <Row>
                   <Col>
@@ -54,7 +69,7 @@ function Quiz() {
                     <p>{scenarios[questionCount - 1].Left}</p>
                   </Col>
                   <Col xs={2} >
-                    <p>Or</p>
+                    <p>or</p>
                   </Col>
                   <Col xs={5} className="answer" >
                     <p>{scenarios[questionCount - 1].Right}</p>
@@ -70,7 +85,7 @@ function Quiz() {
                     <p>{scenarios[questionCount - 1].Left}</p>
                   </Col>
                   <Col xs={2} >
-                    <p>Or</p>
+                    <p>or</p>
                   </Col>
                   <Col xs={5} className="answer" >
                     <p>{scenarios[questionCount - 1].Right}</p>

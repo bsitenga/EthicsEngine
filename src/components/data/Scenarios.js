@@ -1,5 +1,5 @@
 module.exports = [
-    { Left: "Drive straight and hit 1 pedestrian", Right: "Swerve and hit a different pedestrians"},
+    { Left: "Continue straight and hit 1 pedestrian", Right: "Swerve into the other pedestrians"},
     { Left: "", Right: "" },
     { Left: "", Right: "" },
     { Left: "", Right: "" },

@@ -77,11 +77,10 @@
 .quiz-container {
     background-color: #FCFCFC;
     color: #142B6F;
-    height: calc(100vh - 69.6px);
 }
 
 .quiz-container .instructions {
-    margin-top: 5vh;
+    margin-top: 3vh;
 }
 
 .quiz-container .instructions h4 {
@@ -100,6 +99,7 @@
     background-color: var(--highlights);
     padding: calc(5px + .2vw) calc(18px + .6vw);
     margin-top: 2vh;
+    margin-bottom: 5vh;
 }
 
 .quiz-container .instructions button:hover {
