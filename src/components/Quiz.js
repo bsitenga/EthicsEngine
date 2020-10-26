@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 
 function Quiz() {
   const [questionCount, setQuestionCount] = useState(0);
+  const [allAnswers, setAllAnswers] = useState([]);
   const [answers, setAnswers] = useState([0, 0]);
   const [util, setUtil] = useState([0, 0]);
   const [action, setAction] = useState([0, 0]);
@@ -25,6 +26,11 @@ function Quiz() {
   }
 
   const nextQuestion = () => {
+    let answerCopy = answers.slice();
+    let allAnswerCopy = allAnswers.slice();
+    //CHANGE LATER TO PREFERENCE RECORDS
+    allAnswerCopy.push(answerCopy);
+    setAllAnswers(allAnswerCopy);
     setAnswers([0, 0]);
     setQuestionCount(questionCount + 1)
   }
@@ -38,7 +44,7 @@ function Quiz() {
               <div className="instructions" >
                 <h4>Scenario</h4>
                 <p>
-                  Suppose that an automous vehicle (AV) is driving in heavy rain when the AV suddenly detects two groups of pedestrians in its path.
+                  Suppose that an autonomous vehicle (AV) is driving in heavy rain when the AV suddenly detects two groups of pedestrians in its path.
                   Sadly, it's unable to stop in time due to the low visibility and slippery roads. It must make a choice between staying its course or swerving into the other
                   group of pedestrians. The scenario may also involve choosing between saving the pedestrians or the passengers. Either way,
                   the AV must decide between two unfortunate outcomes. The purpose of this quiz is to gather your opinion on which outcomes the AV should choose.
@@ -51,7 +57,7 @@ function Quiz() {
                 </p>
                 <h4>What's Being Measured?</h4>
                 <p>
-                  Action vs. Inaction - It's important to make the distinction between staying the course and swerving. By swerving, you're taking action by driving into the other pedestirans.
+                  Action vs. Inaction - It's important to make the distinction between staying the course and swerving. By swerving, you're taking action by driving into the other pedestrians.
                   By staying in your lane, you're choosing inaction by driving into the pedestrians already in your way.
                 </p>
                 <p>
@@ -62,7 +68,7 @@ function Quiz() {
                   measure your preference for which group you'd rather save.
                 </p>
                 <p>
-                  Known vs. Unknown - Other scenarios will feature a choice between hitting a known number of pedestrians, or moving into an opposite lane with an unkown number of pedestrians, if any.
+                  Known vs. Unknown - Other scenarios will feature a choice between hitting a known number of pedestrians, or moving into an opposite lane with an unknown number of pedestrians, if any.
                 </p>
                 <button onClick={() => setQuestionCount(1)} >Start Quiz</button>
               </div>
@@ -72,7 +78,7 @@ function Quiz() {
                 <p className="extra-info" >Scenario Info</p>
                 <Row>
                   <Col>
-                    <h6>As a bystander, should the car</h6>
+                    <h6>As an impartial observer, should the car</h6>
                   </Col>
                 </Row>
                 <Row className="first-question" >
