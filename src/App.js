@@ -2,6 +2,7 @@ import './App.css';
 import { Route, Switch, Link } from 'react-router-dom';
 import Home from './components/Home.js';
 import Quiz from './components/Quiz.js';
+import Results from './components/Results.js';
 import About from './components/About.js';
 import Methodology from './components/Methodology.js';
 import Error from './components/Error.js'
@@ -22,6 +23,7 @@ function App() {
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/quiz" component={Quiz} />
+        <Route path="/results" component={Results} />
         <Route path="/about" component={About} />
         <Route path="/methodology" component={Methodology} />
         <Route component={Error} />
