@@ -6,14 +6,11 @@ import Col from 'react-bootstrap/Col';
 
 function Quiz() {
   const [questionCount, setQuestionCount] = useState(0);
-  const [allAnswers, setAllAnswers] = useState([]);
+  const [allAnswers, setAllAnswers] = useState({ util: 0, action: 0, known: 0, pedestrians: 0 });
   const [answers, setAnswers] = useState([0, 0]);
-  const [util, setUtil] = useState([0, 0]);
-  const [action, setAction] = useState([0, 0]);
-  const [known, setKnown] = useState([0, 0]);
-  const [pedestrians, setPedestrians] = useState([0, 0]);
 
-  const scenarios = require('./data/Scenarios.js')
+  const scenarios = require('./data/Scenarios.js');
+  const measurements = require('./data/Measurements.js');
 
   const chooseAnswer = (numQuestion, side) => {
     let answerCopy = answers.slice();
@@ -27,9 +24,25 @@ function Quiz() {
 
   const nextQuestion = () => {
     let answerCopy = answers.slice();
-    let allAnswerCopy = allAnswers.slice();
-    //CHANGE LATER TO PREFERENCE RECORDS
-    allAnswerCopy.push(answerCopy);
+    let allAnswerCopy = Object.assign({}, allAnswers)
+
+    for (let key in allAnswerCopy) {
+      if (answerCopy[0] === 1) {
+        allAnswerCopy[key] += measurements[questionCount - 1].Left[key];
+      } else {
+        allAnswerCopy[key] += measurements[questionCount - 1].Right[key];
+      }
+      if (answerCopy[1] === 1) {
+        allAnswerCopy[key] += measurements[questionCount - 1].Left[key];
+      } else {
+        allAnswerCopy[key] += measurements[questionCount - 1].Right[key];
+      }
+    }
+
+    if (questionCount === 10) {
+      console.log("submitted");
+    }
+
     setAllAnswers(allAnswerCopy);
     setAnswers([0, 0]);
     setQuestionCount(questionCount + 1)
@@ -64,7 +77,7 @@ function Quiz() {
                   Saving More vs. Saving Less - This will measure how heavily you prefer saving more lives over all else.
                 </p>
                 <p>
-                  Pedestrians vs. Passengers - Some scenarios will feature a choice between hitting a group of pedestrians or sacrificing the passengers by hitting a barrier. These scenarios will 
+                  Pedestrians vs. Passengers - Some scenarios will feature a choice between hitting a group of pedestrians or sacrificing the passengers by hitting a barrier. These scenarios will
                   measure your preference for which group you'd rather save.
                 </p>
                 <p>
@@ -111,7 +124,7 @@ function Quiz() {
                 {questionCount !== 10 ?
                   <button onClick={() => nextQuestion()} >Next</button>
                   :
-                  <Link to="/results"><button onClick={() => console.log("submitted!")}>See Results</button></Link>}
+                  <Link to="/results"><button onClick={() => nextQuestion()}>See Results</button></Link>}
               </div>}
           </Col>
         </Row>
