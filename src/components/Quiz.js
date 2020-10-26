@@ -6,6 +6,17 @@ import Col from 'react-bootstrap/Col';
 
 function Quiz() {
   const [questionCount, setQuestionCount] = useState(0);
+  const [answers, setAnswers] = useState([]);
+  const [util, setUtil] = useState(0);
+  const [action, setAction] = useState(0);
+  const [known, setKnown] = useState(0);
+  const [pedestrians, setPedestrians] = useState(0);
+
+  const scenarios = require('./data/Scenarios.js')
+
+  const chooseAnswer = (numQuestion, side) => {
+    
+  }
 
   return (
     <div className="quiz-container">
@@ -17,7 +28,7 @@ function Quiz() {
                 <h4>Scenario</h4>
                 <p>
                   Suppose that an automous vehicle (AV) is driving in heavy rain when the AV suddenly detects two groups of pedestrians in its path.
-                  Sadly, it's unable to stop due to the low visibility and slippery roads. It must make a choice between staying its course or swerving into the other
+                  Sadly, it's unable to stop in time due to the low visibility and slippery roads. It must make a choice between staying its course or swerving into the other
                   group of pedestrians. The scenario may also involve choosing between saving the pedestrians or the passengers. Either way,
                   the AV must decide between two unfortunate outcomes. The purpose of this quiz is to gather your opinion on which outcomes the AV should choose.
                 </p>
@@ -32,20 +43,21 @@ function Quiz() {
               :
               <div className="question">
                 <h4>Question {questionCount} / 10</h4>
+                <p className="extra-info" >Scenario Info</p>
                 <Row>
                   <Col>
                     <h6>As a bystander, should the car</h6>
                   </Col>
                 </Row>
                 <Row className="first-question" >
-                  <Col>
-                    Drive straight and hit 3 pedestrians
+                  <Col xs={5} className="answer" >
+                    <p>{scenarios[questionCount - 1].Left}</p>
                   </Col>
-                  <Col>
-                    Or
+                  <Col xs={2} >
+                    <p>Or</p>
                   </Col>
-                  <Col>
-                    Swerve and hit 3 other pedestrians
+                  <Col xs={5} className="answer" >
+                    <p>{scenarios[questionCount - 1].Right}</p>
                   </Col>
                 </Row>
                 <Row>
@@ -54,14 +66,14 @@ function Quiz() {
                   </Col>
                 </Row>
                 <Row className="second-question">
-                  <Col>
-                    Drive straight hit 3 pedestrians
+                  <Col xs={5} className="answer" >
+                    <p>{scenarios[questionCount - 1].Left}</p>
                   </Col>
-                  <Col>
-                    Or
+                  <Col xs={2} >
+                    <p>Or</p>
                   </Col>
-                  <Col>
-                    Swerve and hit 3 other pedestrians
+                  <Col xs={5} className="answer" >
+                    <p>{scenarios[questionCount - 1].Right}</p>
                   </Col>
                 </Row>
                 {questionCount !== 10 ?
