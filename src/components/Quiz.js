@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 
 function Quiz() {
   const [questionCount, setQuestionCount] = useState(0);
-  const [answers, setAnswers] = useState([-1, -1]);
+  const [answers, setAnswers] = useState([0, 0]);
   const [util, setUtil] = useState([0, 0]);
   const [action, setAction] = useState([0, 0]);
   const [known, setKnown] = useState([0, 0]);
@@ -15,7 +15,18 @@ function Quiz() {
   const scenarios = require('./data/Scenarios.js')
 
   const chooseAnswer = (numQuestion, side) => {
-    
+    let answerCopy = answers.slice();
+    if (side === 'left') {
+      answerCopy[numQuestion - 1] = 1;
+    } else {
+      answerCopy[numQuestion - 1] = 2;
+    }
+    setAnswers(answerCopy);
+  }
+
+  const nextQuestion = () => {
+    setAnswers([0, 0]);
+    setQuestionCount(questionCount + 1)
   }
 
   return (
@@ -65,13 +76,13 @@ function Quiz() {
                   </Col>
                 </Row>
                 <Row className="first-question" >
-                  <Col xs={5} className="answer" >
+                  <Col onClick={() => chooseAnswer(1, "left")} xs={5} className={answers[0] === 1 ? "active answer" : "answer"} >
                     <p>{scenarios[questionCount - 1].Left}</p>
                   </Col>
                   <Col xs={2} >
                     <p>or</p>
                   </Col>
-                  <Col xs={5} className="answer" >
+                  <Col onClick={() => chooseAnswer(1, "right")} xs={5} className={answers[0] === 2 ? "active answer" : "answer"} >
                     <p>{scenarios[questionCount - 1].Right}</p>
                   </Col>
                 </Row>
@@ -81,18 +92,18 @@ function Quiz() {
                   </Col>
                 </Row>
                 <Row className="second-question">
-                  <Col xs={5} className="answer" >
+                  <Col onClick={() => chooseAnswer(2, "left")} xs={5} className={answers[1] === 1 ? "active answer" : "answer"} >
                     <p>{scenarios[questionCount - 1].Left}</p>
                   </Col>
                   <Col xs={2} >
                     <p>or</p>
                   </Col>
-                  <Col xs={5} className="answer" >
+                  <Col onClick={() => chooseAnswer(2, "right")} xs={5} className={answers[1] === 2 ? "active answer" : "answer"} >
                     <p>{scenarios[questionCount - 1].Right}</p>
                   </Col>
                 </Row>
                 {questionCount !== 10 ?
-                  <button onClick={() => setQuestionCount(questionCount + 1)} >Next</button>
+                  <button onClick={() => nextQuestion()} >Next</button>
                   :
                   <Link to="/results"><button onClick={() => console.log("submitted!")}>See Results</button></Link>}
               </div>}
