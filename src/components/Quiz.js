@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Results from './Results';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,6 +9,7 @@ function Quiz() {
   const [questionCount, setQuestionCount] = useState(0);
   const [allAnswers, setAllAnswers] = useState({ util: 0, action: 0, known: 0, pedestrians: 0 });
   const [answers, setAnswers] = useState([0, 0]);
+  const [finished, setFinished] = useState(false);
 
   const scenarios = require('./data/Scenarios.js');
   const measurements = require('./data/Measurements.js');
@@ -40,6 +42,7 @@ function Quiz() {
     }
 
     if (questionCount === 10) {
+      setFinished(true);
       console.log("submitted");
     }
 
@@ -50,7 +53,7 @@ function Quiz() {
 
   return (
     <div className="quiz-container">
-      <Container>
+      {finished ? <Results /> :<Container>
         <Row>
           <Col>
             {questionCount === 0 ?
@@ -124,11 +127,11 @@ function Quiz() {
                 {questionCount !== 10 ?
                   <button onClick={() => nextQuestion()} >Next</button>
                   :
-                  <Link to="/results"><button onClick={() => nextQuestion()}>See Results</button></Link>}
+                  <button onClick={() => nextQuestion()}>See Results</button>}
               </div>}
           </Col>
         </Row>
-      </Container>
+      </Container>}
     </div>
   );
 }
