@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Results from './Results';
-import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import axios from 'axios';
 
 function Quiz() {
   const [questionCount, setQuestionCount] = useState(0);
@@ -42,8 +42,11 @@ function Quiz() {
     }
 
     if (questionCount === 10) {
+      axios.post('http://localhost:5000/preferences', allAnswerCopy)
+        .then(res => console.log(res.data))
+      axios.post('http://localhost:5000/summary', allAnswerCopy)
+        .then(res => console.log(res.data))
       setFinished(true);
-      console.log("submitted");
     }
 
     setAllAnswers(allAnswerCopy);
@@ -53,7 +56,7 @@ function Quiz() {
 
   return (
     <div className="quiz-container">
-      {finished ? <Results /> :<Container>
+      {finished ? <Results userPrefs={allAnswers} /> : <Container>
         <Row>
           <Col>
             {questionCount === 0 ?

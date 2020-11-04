@@ -184,3 +184,8 @@
 .quiz-container .question button:focus {
     outline: none;
 }
+
+/* RESULTS */
+.radar-chart-container {
+    width: 40vw;
+}
