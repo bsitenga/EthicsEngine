@@ -28,7 +28,7 @@ class Results extends React.Component {
   chartRef = React.createRef();
 
   componentDidMount() {
-    axios.get('http://localhost:5000/summary')
+    axios.get('https://ethicsenginebackend.herokuapp.com/summary')
       .then(res => {
         const uPrefs = this.props.userPrefs;
         const aPrefs = res.data[0];

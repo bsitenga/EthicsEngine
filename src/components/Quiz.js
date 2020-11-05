@@ -42,9 +42,9 @@ function Quiz() {
     }
 
     if (questionCount === 10) {
-      axios.post('http://localhost:5000/preferences', allAnswerCopy)
+      axios.post('https://ethicsenginebackend.herokuapp.com/preferences', allAnswerCopy)
         .then(res => console.log(res.data))
-      axios.post('http://localhost:5000/summary', allAnswerCopy)
+      axios.post('https://ethicsenginebackend.herokuapp.com/summary', allAnswerCopy)
         .then(res => console.log(res.data))
       setFinished(true);
     }
