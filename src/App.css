@@ -25,7 +25,6 @@
 .home-container {
     background-color: #FCFCFC;
     height: calc(100vh - 69.6px);
-    overflow-y: hidden;
     color: #142B6F;
 }
 
@@ -34,11 +33,21 @@
     padding-left: 10px;
     margin-right: 20px;
     padding-right: 10px;
-    margin-top: 10vh;
+    padding-top: 10vh;
+}
+
+.home-container #home-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10vh;
 }
 
 .home-container .col-lg-8 {
     width: 95%
+}
+
+.home-container .col-lg-4 {
+    width: 95%;
 }
 
 .home-container h1 {

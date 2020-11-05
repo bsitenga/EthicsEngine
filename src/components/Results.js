@@ -84,7 +84,7 @@ class Results extends React.Component {
             scale: {
               ticks: {
                 suggestedMin: 0,
-                suggestedMax: 1
+                suggestedMax: 1.05
               }
             }
           }
@@ -107,17 +107,10 @@ class Results extends React.Component {
                   <canvas id="radar-chart" ref={this.chartRef} />
                 </div>
                 <div>
-                  <h4>What Mattered Most</h4>
+                  <h4>Issues that Mattered Most to You</h4>
                   <div>
                     <p>{Matters.most[this.state.rankings[0].type]}</p>
                     <p>{Matters.most[this.state.rankings[1].type]}</p>
-                  </div>
-                </div>
-                <div>
-                  <h4>What Mattered Least</h4>
-                  <div>
-                    <p>{Matters.least[this.state.rankings[this.state.rankings.length - 1].type]}</p>
-                    <p>{Matters.least[this.state.rankings[this.state.rankings.length - 2].type]}</p>
                   </div>
                 </div>
                 <div>

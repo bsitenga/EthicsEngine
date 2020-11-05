@@ -2,27 +2,132 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import React from 'react';
+import { Radar } from 'react-chartjs-2';
+import axios from 'axios'
+import Totals from './data/Totals'
 
-function Home() {
-    return (
-        <div className="home-container">
-            <Container>
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            rData: {
+                more: this.rNum(),
+                less: this.rNum(),
+                action: this.rNum(),
+                inaction: this.rNum(),
+                known: this.rNum(),
+                unknown: this.rNum(),
+                pedestrians: this.rNum(),
+                passengers: this.rNum()
+            },
+            aData: {
+                more: this.rNum(),
+                less: this.rNum(),
+                action: this.rNum(),
+                inaction: this.rNum(),
+                known: this.rNum(),
+                unknown: this.rNum(),
+                pedestrians: this.rNum(),
+                passengers: this.rNum()
+            }
+        }
+    }
+
+    componentDidMount() {
+        //Fetch summary data for radar graph
+        axios.get('https://ethicsenginebackend.herokuapp.com/summary')
+            .then(res => {
+                const aPrefs = res.data[0];
+                this.setState({
+                    aData: {
+                        more: aPrefs.more,
+                        less: aPrefs.less,
+                        action: aPrefs.action,
+                        inaction: aPrefs.inaction,
+                        known: aPrefs.known,
+                        unknown: aPrefs.unknown,
+                        pedestrians: aPrefs.pedestrians,
+                        passengers: aPrefs.passengers
+                    }
+                })
+            })
+
+        //Set values between .15 and .85 for user data every 2 seconds
+        this.interval = setInterval(() => this.setState({
+            rData: {
+                more: this.rNum(),
+                less: this.rNum(),
+                action: this.rNum(),
+                inaction: this.rNum(),
+                known: this.rNum(),
+                unknown: this.rNum(),
+                pedestrians: this.rNum(),
+                passengers: this.rNum()
+            }
+        }), 2500);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    //returns random number between .15 and .85
+    rNum() {
+        return Math.floor(Math.random() * (61) + 15) / 100;
+    }
+
+    render() {
+        return <div className="home-container">
+            <Container fluid id="home-fluid">
                 <Row>
-                    <Col lg={8} >
+                    <Col lg={6} >
                         <h1>Shape the way autonomous vehicles are designed</h1>
                         <h6>Ethics Engine is a platform designed to measure public opinion of
                             autonomous driving and the moral challenges it faces.</h6>
-                        <p>The quiz will show you a series of moral dilemmas involving an 
-                            autonomous vehicle. You will choose how the autonomous vehicle 
-                            should act in each situation. Afterwards, you'll be shown your
+                        <p>The quiz will show you a series of moral dilemmas involving an
+                        autonomous vehicle. You will choose how the autonomous vehicle
+                        should act in each situation. Afterwards, you'll be shown your
                             responses compared to the average of all others.</p>
                         <Link to="/quiz"><button>Start Quiz</button></Link>
                     </Col>
-                    <Col lg={4} >Column 2</Col>
+                    <Col lg={6} >
+                        <Radar data={{
+                            labels: ["Saving More", "Saving Less", "Action", "Inaction", "Known", "Unknown", "Pedestrians", "Passengers"],
+                            datasets: [
+                                {
+                                    label: "You",
+                                    data: [this.state.rData.more, this.state.rData.less, this.state.rData.action, this.state.rData.inaction,
+                                    this.state.rData.known, this.state.rData.unknown, this.state.rData.pedestrians, this.state.rData.passengers],
+                                    backgroundColor: 'rgb(255, 103, 135, .3)',
+                                    borderColor: 'rgb(255, 103, 135)',
+                                    pointBackgroundColor: 'rgb(255,103,135)',
+                                    pointBorderColor: '#FFFFFF'
+                                },
+                                {
+                                    label: "Global Average",
+                                    data: [(this.state.aData.more / Totals.more).toFixed(2), (this.state.aData.less / Totals.less).toFixed(2), (this.state.aData.action / Totals.action).toFixed(2), (this.state.aData.inaction / Totals.inaction).toFixed(2),
+                                    (this.state.aData.known / Totals.known).toFixed(2), (this.state.aData.unknown / Totals.unknown).toFixed(2), (this.state.aData.pedestrians / Totals.pedestrians).toFixed(2), (this.state.aData.passengers / Totals.passengers).toFixed(2)],
+                                    backgroundColor: 'rgb(54, 162, 235, .3)',
+                                    borderColor: 'rgb(54, 162, 235)',
+                                    pointBackgroundColor: 'rgb(54, 162, 235)',
+                                    pointBorderColor: '#FFFFFF'
+                                }
+                            ]
+                        }}
+                            options={{
+                                scale: {
+                                    ticks: {
+                                        suggestedMin: 0,
+                                        suggestedMax: 1.
+                                    }
+                                }
+                            }} />
+                    </Col>
                 </Row>
             </Container>
         </div>
-    );
+    }
 }
 
 export default Home;
