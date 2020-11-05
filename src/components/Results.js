@@ -5,6 +5,7 @@ import Totals from './data/Totals';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Measurements from './data/Measurements';
 
 class Results extends React.Component {
   constructor(props) {
@@ -67,9 +68,23 @@ class Results extends React.Component {
       })
   }
 
-  parseData() {
+  parseData(pref, prefNum) {
     let util1 = 0;
-    
+    let util2 = 0;
+    let action1 = 0;
+    let action2 = 0;
+    let inaction1 = 0;
+    let inaction2 = 0;
+    let known1 = 0;
+    let known2 = 0;
+    let pedestrians1 = 0;
+    let pedestrians2 = 0;
+    if (pref > 0) {
+      for (let i = 0; i < Totals[prefNum][1]; i++) {
+        
+      }
+    }
+
     return {
       
     }

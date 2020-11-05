@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function Quiz() {
   const [questionCount, setQuestionCount] = useState(0);
-  const [allAnswers, setAllAnswers] = useState({ util: 0, action: 0, known: 0, pedestrians: 0 });
+  const [allAnswers, setAllAnswers] = useState({ more: 0, less: 0, action: 0, inaction: 0, known: 0, unknown: 0, pedestrians: 0, passengers: 0 });
   const [answers, setAnswers] = useState([0, 0]);
   const [finished, setFinished] = useState(false);
 
