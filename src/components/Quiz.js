@@ -48,7 +48,6 @@ function Quiz() {
         .then(res => console.log(res.data))
       setFinished(true);
     }
-
     setAllAnswers(allAnswerCopy);
     setAnswers([0, 0]);
     setQuestionCount(questionCount + 1)

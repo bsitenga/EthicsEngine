@@ -12,10 +12,14 @@ class Results extends React.Component {
     super(props);
     this.state = {
       fetched: false,
-      aUtil: 0,
+      aMore: 0,
+      aLess: 0,
       aAction: 0,
+      aInaction: 0,
       aKnown: 0,
-      aPedestrians: 0
+      aUnknown: 0,
+      aPedestrians: 0,
+      aPassengers: 0
     };
   }
 
@@ -25,13 +29,19 @@ class Results extends React.Component {
     axios.get('http://localhost:5000/summary')
       .then(res => {
         //Fetch Summary Data
-        this.setState({ aUtil: res.util });
+        this.setState({ aMore: res.more });
+        this.setState({ aLess: res.less });
         this.setState({ aAction: res.action });
+        this.setState({ aInaction: res.inaction });
         this.setState({ aKnown: res.known });
+        this.setState({ aUnknown: res.unknown });
         this.setState({ aPedestrians: res.pedestrians });
+        this.setState({ aPassengers: res.passengers });
         this.setState({ fetched: true })
-
+  
         //Create Radar Chart
+        const uPrefs = this.props.userPrefs;
+        const aPrefs = res.data[0];
         const myChartRef = this.chartRef.current.getContext("2d");
         new Chart(myChartRef, {
           type: "radar",
@@ -40,7 +50,8 @@ class Results extends React.Component {
             datasets: [
               {
                 label: "You",
-                data: [.7, .6, .3, .3, .6, .9, .5, .5],
+                data: [uPrefs.more / Totals.more, uPrefs.less / Totals.less, uPrefs.action / Totals.action, uPrefs.inaction / Totals.inaction,
+                uPrefs.known / Totals.known, uPrefs.unknown / Totals.unknown, uPrefs.pedestrians / Totals.pedestrians, uPrefs.passengers / Totals.passengers],
                 backgroundColor: 'rgb(255, 103, 135, .3)',
                 borderColor: 'rgb(255, 103, 135)',
                 pointBackgroundColor: 'rgb(255,103,135)',
@@ -48,7 +59,8 @@ class Results extends React.Component {
               },
               {
                 label: "Average",
-                data: [.4, .4, .6, .5, .3, .8, .4, .6],
+                data: [aPrefs.more / Totals.more, aPrefs.less / Totals.less, aPrefs.action / Totals.action, aPrefs.inaction / Totals.inaction,
+                  aPrefs.known / Totals.known, aPrefs.unknown / Totals.unknown, aPrefs.pedestrians / Totals.pedestrians, aPrefs.passengers / Totals.passengers],
                 backgroundColor: 'rgb(54, 162, 235, .3)',
                 borderColor: 'rgb(54, 162, 235)',
                 pointBackgroundColor: 'rgb(54, 162, 235)',
@@ -66,28 +78,6 @@ class Results extends React.Component {
           }
         });
       })
-  }
-
-  parseData(pref, prefNum) {
-    let util1 = 0;
-    let util2 = 0;
-    let action1 = 0;
-    let action2 = 0;
-    let inaction1 = 0;
-    let inaction2 = 0;
-    let known1 = 0;
-    let known2 = 0;
-    let pedestrians1 = 0;
-    let pedestrians2 = 0;
-    if (pref > 0) {
-      for (let i = 0; i < Totals[prefNum][1]; i++) {
-        
-      }
-    }
-
-    return {
-      
-    }
   }
 
   render() {
