@@ -21,7 +21,19 @@ module.exports = {
 
         },
         Methodology: {
-            
+            Headings: {
+                Recording: "Recording Preferences",
+                Calculations: "Calculations"
+            },
+            Paragraphs: {
+                Recording1: "A user’s answers are recorded as preferences in a JSON object. A summary object keeps track of the number of preferences and the average of all preferences. Each preference object is recorded with its raw values, and the summary object is averaged to represent each preference over the total number of preferences. For display purposes, preferences are normalized and represented as a value between 0 and 1.",
+                Recording2: "Individual Preference Object: { “more”: 2, “less”: 4, “action”: 18, “inaction”: 2, “known”: 2, “unknown”: 6, “pedestrians”: 4, “passengers”: 4 }",
+                Recording3: "Normalized Individual Preference Object: { “more”: 2 / 6, “less”: 4 / 6, “action”: 18 / 20, “inaction”: 2 / 20, “known”: 2 / 8, “unknown”: 6 / 8, “pedestrians”: 4 / 8, “passengers”: 4 / 8 }",
+                Recording4: "Summary Object: { “total”: 10, “more”: 2.7, “less”: 3, “action”: 11.1, “inaction”: 7.7, “known”: 3.3, “unknown”: 4.4, “pedestrians”: 3.1, “passengers”: 3.4 }",
+                Calculations1: "Normalizing preferences: (raw preference score) / (total preference score in that category)",
+                Calculations2: "Ranking preferences: A user’s preferences are ranked by their deviation from the average results.",
+                Calculations3: "Deviation: [(normalized user preference) - (normalized average preference)] / (normalized average preference)"
+            }
         },
         Quiz: {
 
