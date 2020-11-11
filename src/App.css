@@ -200,6 +200,8 @@
     width: 50vw;
     margin: 0 auto;
     min-width: 300px;
+    padding-top: 3vh;
+    padding-bottom: 5vh;
 }
 
 /* ABOUT */

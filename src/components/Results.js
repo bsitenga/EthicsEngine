@@ -1,11 +1,10 @@
 import React from 'react';
 import axios from 'axios'
-import Chart from 'chart.js';
 import Totals from './data/Totals';
 import Matters from './data/Matters';
+import Text from './data/Text';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { Radar } from 'react-chartjs-2';
 
 class Results extends React.Component {
@@ -98,19 +97,19 @@ class Results extends React.Component {
                       }
                     }} />
                 </div>
-                <div>
-                  <h4>Issues that Mattered Most to You</h4>
+                <div className="results-text" >
+                  <h4>{Text["English"].Results.Headings.Matters}</h4>
                   <div>
                     <p>{Matters.most[this.state.rankings[0].type]}</p>
                     <p>{Matters.most[this.state.rankings[1].type]}</p>
                   </div>
-                </div>
-                <div>
-                  <h4>How would your AV act?</h4>
-                  <h4>How would the average AV act?</h4>
+                  <h4>{Text["English"].Results.Headings.AVFacts}</h4>
+                  <p><a href="https://www.nhtsa.gov/sites/nhtsa.dot.gov/files/documents/13069a-ads2.0_090617_v9a_tag.pdf" target="_blank" >{Text["English"].Results.Paragraphs.AVFacts1}</a></p>
+                  <p><a href="https://www.grandviewresearch.com/industry-analysis/autonomous-vehicles-market" target="_blank" >{Text["English"].Results.Paragraphs.AVFacts2}</a></p>
+                  <h4>{Text["English"].Results.Headings.Closing}</h4>
+                  <p>{Text["English"].Results.Paragraphs.Closing}</p>
                 </div>
             </Row>
-
           </Container>
         </div>
         : <div>Loading...</div>}
