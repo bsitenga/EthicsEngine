@@ -13,7 +13,7 @@ module.exports = {
                 Development: "Ethics Engine was created primarily with the web technologies React, Express, and Node.js. All survey answers are stored and fetched from MongoDB, a secure global cloud database. The backend is hosted on Heroku, a major cloud platform, and the frontend is deployed on AWS Amplify.",
                 Frontend: "Frontend Technologies: Bootstrap, Chart.js, CSS, HTML, React, React Router",
                 Backend: "Backend Technologies: Axios, Express.js, MongoDB, Mongoose, Node.js",
-                AboutMe: "Hi! My name is Brian and I’m a web developer and student at the University of Southern California. I created Ethics Engine to gather and share data about ethical decision making in response to the rise of autonomous driving. On a broader level, I made this website because I’m concerned with the pace of technological advancement especially when compared to the slow pace of public policy. I believe that developers have a growing responsibility to set the standard for new technology that we create in the absence of government regulation. In some way, I hope to contribute to this culture of responsible development by making websites that question and explore the ethical ramifications of new technology. To stay true to my development philosophy, the Ethics Engine frontend is completely open-source under the MIT License. If you see any way to make this site more accessible, inclusive, or user-friendly, I urge you to contribute to the repository linked below.",
+                AboutMe: "Hi! My name is Brian and I’m a web developer and student at the University of Southern California. I created Ethics Engine to gather and share data about ethical decision making in response to the rise of autonomous driving. On a broader level, I made this website because I’m concerned with the pace of technological advancement especially when compared to the slow pace of public policy. I believe that developers have a growing responsibility to set the standard for new technology that we create in the absence of government regulation. In some way, I hope to contribute to this culture of responsible development by making websites that question and explore the ethical ramifications of new technology. To stay true to my development philosophy, the Ethics Engine frontend is completely open-source under the MIT License. If you see any way to make this site more accessible, inclusive, or user-friendly, I urge you to contact me or contribute to the repository linked below.",
                 Repository: "Repository"
             }
         },
@@ -21,7 +21,7 @@ module.exports = {
 
         },
         Methodology: {
-
+            
         },
         Quiz: {
 

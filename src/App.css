@@ -203,9 +203,18 @@
 /* ABOUT */
 .about-container {
     background-color: var(--white-bg);
+    color: #142B6F;
+    margin-top: 3vh;
 }
 
+.about-container h3 {
+    font-size: calc(16px + 1.4vw);
+    margin-bottom: 5px;
+}
 
+.about-container p {
+    font-size: calc(12px + .8vw);
+}
 
 .about-container .repo-link {
     margin-bottom: 0;
