@@ -72,6 +72,7 @@
     border: none;
     background-color: var(--highlights);
     padding: calc(5px + .2vw) calc(18px + .6vw);
+    margin-bottom: 50px;
 }
 
 .home-container button:hover {
