@@ -6,6 +6,7 @@ import Matters from './data/Matters';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Radar } from 'react-chartjs-2';
 
 class Results extends React.Component {
   constructor(props) {
@@ -23,8 +24,6 @@ class Results extends React.Component {
       rankings: [{ more: 0 }, { less: 0 }, { action: 0 }, { inaction: 0 }, { known: 0 }, { unknown: 0 }, { pedestrians: 0 }, { passengers: 0 }]
     };
   }
-
-  chartRef = React.createRef();
 
   componentDidMount() {
     //Fetch Summary Data
@@ -53,43 +52,6 @@ class Results extends React.Component {
           return b.dev - a.dev;
         })
         this.setState({ rankings: copyRankings })
-
-        //Create Radar Chart
-        const myChartRef = this.chartRef.current.getContext("2d");
-        new Chart(myChartRef, {
-          type: "radar",
-          data: {
-            labels: ["Saving More", "Saving Less", "Action", "Inaction", "Known", "Unknown", "Pedestrians", "Passengers"],
-            datasets: [
-              {
-                label: "You",
-                data: [(uPrefs.more / Totals.more).toFixed(2), (uPrefs.less / Totals.less).toFixed(2), (uPrefs.action / Totals.action).toFixed(2), (uPrefs.inaction / Totals.inaction).toFixed(2),
-                (uPrefs.known / Totals.known).toFixed(2), (uPrefs.unknown / Totals.unknown).toFixed(2), (uPrefs.pedestrians / Totals.pedestrians).toFixed(2), (uPrefs.passengers / Totals.passengers).toFixed(2)],
-                backgroundColor: 'rgb(255, 103, 135, .3)',
-                borderColor: 'rgb(255, 103, 135)',
-                pointBackgroundColor: 'rgb(255,103,135)',
-                pointBorderColor: '#FFFFFF'
-              },
-              {
-                label: "Average",
-                data: [(aPrefs.more / Totals.more).toFixed(2), (aPrefs.less / Totals.less).toFixed(2), (aPrefs.action / Totals.action).toFixed(2), (aPrefs.inaction / Totals.inaction).toFixed(2),
-                (aPrefs.known / Totals.known).toFixed(2), (aPrefs.unknown / Totals.unknown).toFixed(2), (aPrefs.pedestrians / Totals.pedestrians).toFixed(2), (aPrefs.passengers / Totals.passengers).toFixed(2)],
-                backgroundColor: 'rgb(54, 162, 235, .3)',
-                borderColor: 'rgb(54, 162, 235)',
-                pointBackgroundColor: 'rgb(54, 162, 235)',
-                pointBorderColor: '#FFFFFF'
-              }
-            ]
-          },
-          options: {
-            scale: {
-              ticks: {
-                suggestedMin: 0,
-                suggestedMax: 1.05
-              }
-            }
-          }
-        });
       })
   }
 
@@ -103,9 +65,38 @@ class Results extends React.Component {
         <div>
           <Container>
             <Row>
-              <Col>
-                <div className="radar-chart-container">
-                  <canvas id="radar-chart" ref={this.chartRef} />
+                <div className="radar-chart-container" id="results-radar" >
+                  <Radar data={{
+                    labels: ["Saving More", "Saving Less", "Action", "Inaction", "Known", "Unknown", "Pedestrians", "Passengers"],
+                    datasets: [
+                      {
+                        label: "You",
+                        data: [(this.props.userPrefs.more / Totals.more).toFixed(2), (this.props.userPrefs.less / Totals.less).toFixed(2), (this.props.userPrefs.action / Totals.action).toFixed(2), (this.props.userPrefs.inaction / Totals.inaction).toFixed(2),
+                        (this.props.userPrefs.known / Totals.known).toFixed(2), (this.props.userPrefs.unknown / Totals.unknown).toFixed(2), (this.props.userPrefs.pedestrians / Totals.pedestrians).toFixed(2), (this.props.userPrefs.passengers / Totals.passengers).toFixed(2)],
+                        backgroundColor: 'rgb(255, 103, 135, .3)',
+                        borderColor: 'rgb(255, 103, 135)',
+                        pointBackgroundColor: 'rgb(255,103,135)',
+                        pointBorderColor: '#FFFFFF'
+                      },
+                      {
+                        label: "Global Average",
+                        data: [(this.state.aMore / Totals.more).toFixed(2), (this.state.aLess / Totals.less).toFixed(2), (this.state.aAction / Totals.action).toFixed(2), (this.state.aInaction / Totals.inaction).toFixed(2),
+                        (this.state.aKnown / Totals.known).toFixed(2), (this.state.aUnknown / Totals.unknown).toFixed(2), (this.state.aPedestrians / Totals.pedestrians).toFixed(2), (this.state.aPassengers / Totals.passengers).toFixed(2)],
+                        backgroundColor: 'rgb(54, 162, 235, .3)',
+                        borderColor: 'rgb(54, 162, 235)',
+                        pointBackgroundColor: 'rgb(54, 162, 235)',
+                        pointBorderColor: '#FFFFFF'
+                      }
+                    ]
+                  }}
+                    options={{
+                      scale: {
+                        ticks: {
+                          suggestedMin: 0,
+                          suggestedMax: 1.
+                        }
+                      }
+                    }} />
                 </div>
                 <div>
                   <h4>Issues that Mattered Most to You</h4>
@@ -118,7 +109,6 @@ class Results extends React.Component {
                   <h4>How would your AV act?</h4>
                   <h4>How would the average AV act?</h4>
                 </div>
-              </Col>
             </Row>
 
           </Container>
