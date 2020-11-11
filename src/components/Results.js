@@ -2,11 +2,10 @@ import React from 'react';
 import axios from 'axios'
 import Chart from 'chart.js';
 import Totals from './data/Totals';
-import Matters from './data/Matters'
+import Matters from './data/Matters';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Measurements from './data/Measurements';
 
 class Results extends React.Component {
   constructor(props) {
@@ -28,12 +27,13 @@ class Results extends React.Component {
   chartRef = React.createRef();
 
   componentDidMount() {
+    //Fetch Summary Data
     axios.get('https://ethicsenginebackend.herokuapp.com/summary')
       .then(res => {
         const uPrefs = this.props.userPrefs;
         const aPrefs = res.data[0];
 
-        //Fetch Summary Data
+        //Set user preference averages
         this.setState({ aMore: aPrefs.more });
         this.setState({ aLess: aPrefs.less });
         this.setState({ aAction: aPrefs.action });
@@ -43,6 +43,8 @@ class Results extends React.Component {
         this.setState({ aPedestrians: aPrefs.pedestrians });
         this.setState({ aPassengers: aPrefs.passengers });
         this.setState({ fetched: true })
+
+        //Create a list of user preferences ranked by deviation from average preferences
         let copyRankings = [{ type: "more", dev: this.findDeviation(aPrefs.more, uPrefs.more) }, { type: "less", dev: this.findDeviation(aPrefs.less, uPrefs.less) },
         { type: "action", dev: this.findDeviation(aPrefs.action, uPrefs.action) }, { type: "inaction", dev: this.findDeviation(aPrefs.inaction, uPrefs.inaction) },
         { type: "known", dev: this.findDeviation(aPrefs.known, uPrefs.known) }, { type: "unknown", dev: this.findDeviation(aPrefs.unknown, uPrefs.unknown) },
@@ -50,7 +52,6 @@ class Results extends React.Component {
         copyRankings = copyRankings.sort((a, b) => {
           return b.dev - a.dev;
         })
-        console.log(copyRankings);
         this.setState({ rankings: copyRankings })
 
         //Create Radar Chart

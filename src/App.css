@@ -199,3 +199,15 @@
 .radar-chart-container {
     width: 40vw;
 }
+
+/* ABOUT */
+.about-container {
+    background-color: var(--white-bg);
+}
+
+
+
+.about-container .repo-link {
+    margin-bottom: 0;
+    padding-bottom: 20px;
+}
