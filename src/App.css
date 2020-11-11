@@ -204,7 +204,7 @@
 .about-container {
     background-color: var(--white-bg);
     color: #142B6F;
-    margin-top: 3vh;
+    padding-top: 3vh;
 }
 
 .about-container h3 {
@@ -219,4 +219,24 @@
 .about-container .repo-link {
     margin-bottom: 0;
     padding-bottom: 20px;
+}
+
+/* METHODOLOGY */
+.methodology-container {
+    background-color: var(--white-bg);
+    color: #142B6F;
+    padding-top: 3vh;
+}
+
+.methodology-container h3 {
+    font-size: calc(16px + 1.4vw);
+    margin-bottom: 5px;
+}
+
+.methodology-container p {
+    font-size: calc(12px + .8vw);
+}
+
+.methodology-container .methodology-subtitle {
+    font-weight: bold;
 }
