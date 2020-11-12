@@ -83,10 +83,10 @@ class Home extends React.Component {
             <Container fluid id="home-fluid">
                 <Row>
                     <Col lg={6} >
-                        <h1>{Text["English"].Home.Headings.main}</h1>
-                        <h6>{Text["English"].Home.Headings.sub}</h6>
-                        <p>{Text["English"].Home.Paragraphs.main}</p>
-                        <Link to="/quiz"><button>{Text["English"].Home.Buttons.start}</button></Link>
+                        <h1>{Text[this.props.language].Home.Headings.main}</h1>
+                        <h6>{Text[this.props.language].Home.Headings.sub}</h6>
+                        <p>{Text[this.props.language].Home.Paragraphs.main}</p>
+                        <Link to="/quiz"><button>{Text[this.props.language].Home.Buttons.start}</button></Link>
                     </Col>
                     <Col lg={6} >
                         <Radar data={{

@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import Home from './components/Home.js';
 import Quiz from './components/Quiz.js';
@@ -8,8 +9,11 @@ import Methodology from './components/Methodology.js';
 import Error from './components/Error.js'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function App() {
+  const [language, setLanguage] = useState("English");
+
   return (
     <main>
       <Navbar bg="light" variant="light" className="center" >
@@ -18,10 +22,16 @@ function App() {
           <Nav.Link href="quiz">Quiz</Nav.Link>
           <Nav.Link href="about">About</Nav.Link>
           <Nav.Link href="methodology">Methodology</Nav.Link>
+          <NavDropdown title={language} id="language-selector">
+            <NavDropdown.Item onClick={() => setLanguage("English")}>English</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => setLanguage("Korean")}>한국어</NavDropdown.Item>
+          </NavDropdown>
         </Nav>
       </Navbar>
       <Switch>
-        <Route path="/" component={Home} exact />
+        <Route path="/" render={(props) => (
+          <Home {...props} language={language} />
+        )} exact />
         <Route path="/quiz" component={Quiz} />
         <Route path="/results" component={Results} />
         <Route path="/about" component={About} />

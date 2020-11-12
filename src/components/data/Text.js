@@ -90,5 +90,22 @@ module.exports = {
                 passengers: "Passengers"
             }
         }
+    },
+    Korean: {
+        About: {
+
+        },
+        Home: {
+            Headings: {
+                main: "자율 주행 차 설계 방식 변경",
+                sub: "Ethics Engine은 자율 주행에 대한 여론과 그에 따른 도덕적 도전을 측정하도록 설계된 플랫폼입니다."
+            },
+            Paragraphs: {
+                main: "퀴즈는 자율 주행 차량과 관련된 일련의 도덕적 딜레마를 보여줍니다. 자율 주행 차가 각 상황에서 어떻게 행동해야하는지 선택합니다. 그 후에 다른 모든 평균과 비교하여 귀하의 응답이 표시됩니다."
+            },
+            Buttons: {
+                start: "퀴즈 시작"
+            }
+        }
     }
 }
