@@ -1,6 +1,7 @@
 import Text from './data/Text';
 import Container from 'react-bootstrap/Container';
 
+//Methodology/Documentation
 function Methodology() {
   return (
     <div className="methodology-container">

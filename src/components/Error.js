@@ -1,7 +1,8 @@
+//If user goes to bad route
 function Error() {
     return (
       <div className="error-container">
-          Error
+          Error - page doesn't exist
       </div>
     );
   }

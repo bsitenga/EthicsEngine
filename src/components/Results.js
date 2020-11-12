@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { Radar } from 'react-chartjs-2';
 
+//Shows results to user compared to global average
 class Results extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +26,7 @@ class Results extends React.Component {
   }
 
   componentDidMount() {
-    //Fetch Summary Data
+    //Fetch Summary Data (global average)
     axios.get('https://ethicsenginebackend.herokuapp.com/summary')
       .then(res => {
         const uPrefs = this.props.userPrefs;
@@ -54,6 +55,7 @@ class Results extends React.Component {
       })
   }
 
+  //finds deviation between global average value and user value
   findDeviation(aValue, nValue) {
     return ((nValue - aValue) / aValue)
   }

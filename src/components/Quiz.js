@@ -6,15 +6,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 
+//Quiz Page and generates user results upon completion of quiz
 function Quiz() {
   const [questionCount, setQuestionCount] = useState(0);
   const [allAnswers, setAllAnswers] = useState({ more: 0, less: 0, action: 0, inaction: 0, known: 0, unknown: 0, pedestrians: 0, passengers: 0 });
   const [answers, setAnswers] = useState([0, 0]);
   const [finished, setFinished] = useState(false);
 
+  //import scenario and normalization information
   const scenarios = require('./data/Scenarios.js');
   const measurements = require('./data/Measurements.js');
 
+  //Selects answer and sets state for direction
   const chooseAnswer = (numQuestion, side) => {
     let answerCopy = answers.slice();
     if (side === 'left') {
@@ -25,6 +28,7 @@ function Quiz() {
     setAnswers(answerCopy);
   }
 
+  //adds answers to state and goes to next question
   const nextQuestion = () => {
     let answerCopy = answers.slice();
     let allAnswerCopy = Object.assign({}, allAnswers)
@@ -42,6 +46,7 @@ function Quiz() {
       }
     }
 
+    //If last question, send user preferences to mongodb
     if (questionCount === 10) {
       axios.post('https://ethicsenginebackend.herokuapp.com/preferences', allAnswerCopy)
         .then(res => console.log(res.data))

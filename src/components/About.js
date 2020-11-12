@@ -1,6 +1,7 @@
 import Text from './data/Text';
 import Container from 'react-bootstrap/Container';
 
+//Basic About Page
 function About() {
   return (
     <div className="about-container">

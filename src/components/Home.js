@@ -8,10 +8,12 @@ import { Radar } from 'react-chartjs-2';
 import axios from 'axios'
 import Totals from './data/Totals'
 
+// Homepage with basic information and example radar graph
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            //randomly generated graph data
             rData: {
                 more: this.rNum(),
                 less: this.rNum(),
@@ -22,6 +24,7 @@ class Home extends React.Component {
                 pedestrians: this.rNum(),
                 passengers: this.rNum()
             },
+            //global average graph data
             aData: {
                 more: this.rNum(),
                 less: this.rNum(),
@@ -69,6 +72,7 @@ class Home extends React.Component {
         }), 2500);
     }
 
+    //Clears interval with random number generation
     componentWillUnmount() {
         clearInterval(this.interval);
     }

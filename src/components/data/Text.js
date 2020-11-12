@@ -1,5 +1,11 @@
 module.exports = {
     English: {
+        Navigation: {
+            Home: "Home",
+            Quiz: "Quiz",
+            About: "About",
+            Methodology: "Methodology"
+        },
         About: {
             Headings: {
                 EthicsEngine: "Ethics Engine",
@@ -92,6 +98,12 @@ module.exports = {
         }
     },
     Korean: {
+        Navigation: {
+            Home: "집",
+            Quiz: "퀴즈",
+            About: "대해",
+            Methodology: "방법론"
+        },
         About: {
 
         },

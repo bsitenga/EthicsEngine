@@ -1,16 +1,18 @@
 import './App.css';
 import React, { useState } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home.js';
 import Quiz from './components/Quiz.js';
 import Results from './components/Results.js';
 import About from './components/About.js';
 import Methodology from './components/Methodology.js';
 import Error from './components/Error.js'
+import Text from './components/data/Text.js';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+//Main Component with Navbar and React Router
 function App() {
   const [language, setLanguage] = useState("English");
 
@@ -18,10 +20,10 @@ function App() {
     <main>
       <Navbar bg="light" variant="light" className="center" >
         <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="quiz">Quiz</Nav.Link>
-          <Nav.Link href="about">About</Nav.Link>
-          <Nav.Link href="methodology">Methodology</Nav.Link>
+          <Nav.Link href="/">{Text[language].Navigation.Home}</Nav.Link>
+          <Nav.Link href="quiz">{Text[language].Navigation.Quiz}</Nav.Link>
+          <Nav.Link href="about">{Text[language].Navigation.About}</Nav.Link>
+          <Nav.Link href="methodology">{Text[language].Navigation.Methodology}</Nav.Link>
           <NavDropdown title={language} id="language-selector">
             <NavDropdown.Item onClick={() => setLanguage("English")}>English</NavDropdown.Item>
             <NavDropdown.Item onClick={() => setLanguage("Korean")}>한국어</NavDropdown.Item>
