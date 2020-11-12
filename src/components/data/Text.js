@@ -49,6 +49,22 @@ module.exports = {
                 AVFacts2: "The market demand for autonomous vehicles is expected to rise exponentially at an average growth rate of 63.4% for the next ten years.",
                 Closing: "This website isn’t meant to discourage you from buying or supporting the growth of autonomous vehicles. In fact, public adoption of AVs could save many lives every year. Instead, this website was intended to spark discussion and further research about the ethical consequences of letting AI make our decisions for us. All survey answers are anonymous, and no personal data was collected or used in this study.",
             }
+        },
+        Radar: {
+            Headings: {
+                you: "You",
+                average: "Global Average"
+            },
+            Labels: {
+                more: "Saving More",
+                less: "Saving Less",
+                action: "Action",
+                inaction: "Inaction",
+                known: "Known",
+                unknown: "Unknown",
+                pedestrians: "Pedestrians",
+                passengers: "Passengers"
+            }
         }
     }
 }

@@ -64,51 +64,51 @@ class Results extends React.Component {
         <div>
           <Container>
             <Row>
-                <div className="radar-chart-container" id="results-radar" >
-                  <Radar data={{
-                    labels: ["Saving More", "Saving Less", "Action", "Inaction", "Known", "Unknown", "Pedestrians", "Passengers"],
-                    datasets: [
-                      {
-                        label: "You",
-                        data: [(this.props.userPrefs.more / Totals.more).toFixed(2), (this.props.userPrefs.less / Totals.less).toFixed(2), (this.props.userPrefs.action / Totals.action).toFixed(2), (this.props.userPrefs.inaction / Totals.inaction).toFixed(2),
-                        (this.props.userPrefs.known / Totals.known).toFixed(2), (this.props.userPrefs.unknown / Totals.unknown).toFixed(2), (this.props.userPrefs.pedestrians / Totals.pedestrians).toFixed(2), (this.props.userPrefs.passengers / Totals.passengers).toFixed(2)],
-                        backgroundColor: 'rgb(255, 103, 135, .3)',
-                        borderColor: 'rgb(255, 103, 135)',
-                        pointBackgroundColor: 'rgb(255,103,135)',
-                        pointBorderColor: '#FFFFFF'
-                      },
-                      {
-                        label: "Global Average",
-                        data: [(this.state.aMore / Totals.more).toFixed(2), (this.state.aLess / Totals.less).toFixed(2), (this.state.aAction / Totals.action).toFixed(2), (this.state.aInaction / Totals.inaction).toFixed(2),
-                        (this.state.aKnown / Totals.known).toFixed(2), (this.state.aUnknown / Totals.unknown).toFixed(2), (this.state.aPedestrians / Totals.pedestrians).toFixed(2), (this.state.aPassengers / Totals.passengers).toFixed(2)],
-                        backgroundColor: 'rgb(54, 162, 235, .3)',
-                        borderColor: 'rgb(54, 162, 235)',
-                        pointBackgroundColor: 'rgb(54, 162, 235)',
-                        pointBorderColor: '#FFFFFF'
+              <div className="radar-chart-container" id="results-radar" >
+                <Radar data={{
+                  labels: [Text["English"].Radar.Labels.more, Text["English"].Radar.Labels.less, Text["English"].Radar.Labels.action, Text["English"].Radar.Labels.inaction, Text["English"].Radar.Labels.known, Text["English"].Radar.Labels.unknown, Text["English"].Radar.Labels.pedestrians, Text["English"].Radar.Labels.passengers],
+                  datasets: [
+                    {
+                      label: Text["English"].Radar.Headings.you,
+                      data: [(this.props.userPrefs.more / Totals.more).toFixed(2), (this.props.userPrefs.less / Totals.less).toFixed(2), (this.props.userPrefs.action / Totals.action).toFixed(2), (this.props.userPrefs.inaction / Totals.inaction).toFixed(2),
+                      (this.props.userPrefs.known / Totals.known).toFixed(2), (this.props.userPrefs.unknown / Totals.unknown).toFixed(2), (this.props.userPrefs.pedestrians / Totals.pedestrians).toFixed(2), (this.props.userPrefs.passengers / Totals.passengers).toFixed(2)],
+                      backgroundColor: 'rgb(255, 103, 135, .3)',
+                      borderColor: 'rgb(255, 103, 135)',
+                      pointBackgroundColor: 'rgb(255,103,135)',
+                      pointBorderColor: '#FFFFFF'
+                    },
+                    {
+                      label: Text["English"].Radar.Headings.average,
+                      data: [(this.state.aMore / Totals.more).toFixed(2), (this.state.aLess / Totals.less).toFixed(2), (this.state.aAction / Totals.action).toFixed(2), (this.state.aInaction / Totals.inaction).toFixed(2),
+                      (this.state.aKnown / Totals.known).toFixed(2), (this.state.aUnknown / Totals.unknown).toFixed(2), (this.state.aPedestrians / Totals.pedestrians).toFixed(2), (this.state.aPassengers / Totals.passengers).toFixed(2)],
+                      backgroundColor: 'rgb(54, 162, 235, .3)',
+                      borderColor: 'rgb(54, 162, 235)',
+                      pointBackgroundColor: 'rgb(54, 162, 235)',
+                      pointBorderColor: '#FFFFFF'
+                    }
+                  ]
+                }}
+                  options={{
+                    scale: {
+                      ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 1.
                       }
-                    ]
-                  }}
-                    options={{
-                      scale: {
-                        ticks: {
-                          suggestedMin: 0,
-                          suggestedMax: 1.
-                        }
-                      }
-                    }} />
+                    }
+                  }} />
+              </div>
+              <div className="results-text" >
+                <h4>{Text["English"].Results.Headings.Matters}</h4>
+                <div>
+                  <p>{Matters.most[this.state.rankings[0].type]}</p>
+                  <p>{Matters.most[this.state.rankings[1].type]}</p>
                 </div>
-                <div className="results-text" >
-                  <h4>{Text["English"].Results.Headings.Matters}</h4>
-                  <div>
-                    <p>{Matters.most[this.state.rankings[0].type]}</p>
-                    <p>{Matters.most[this.state.rankings[1].type]}</p>
-                  </div>
-                  <h4>{Text["English"].Results.Headings.AVFacts}</h4>
-                  <p><a href="https://www.nhtsa.gov/sites/nhtsa.dot.gov/files/documents/13069a-ads2.0_090617_v9a_tag.pdf" target="_blank" >{Text["English"].Results.Paragraphs.AVFacts1}</a></p>
-                  <p><a href="https://www.grandviewresearch.com/industry-analysis/autonomous-vehicles-market" target="_blank" >{Text["English"].Results.Paragraphs.AVFacts2}</a></p>
-                  <h4>{Text["English"].Results.Headings.Closing}</h4>
-                  <p>{Text["English"].Results.Paragraphs.Closing}</p>
-                </div>
+                <h4>{Text["English"].Results.Headings.AVFacts}</h4>
+                <p><a href="https://www.nhtsa.gov/sites/nhtsa.dot.gov/files/documents/13069a-ads2.0_090617_v9a_tag.pdf" target="_blank" >{Text["English"].Results.Paragraphs.AVFacts1}</a></p>
+                <p><a href="https://www.grandviewresearch.com/industry-analysis/autonomous-vehicles-market" target="_blank" >{Text["English"].Results.Paragraphs.AVFacts2}</a></p>
+                <h4>{Text["English"].Results.Headings.Closing}</h4>
+                <p>{Text["English"].Results.Paragraphs.Closing}</p>
+              </div>
             </Row>
           </Container>
         </div>
