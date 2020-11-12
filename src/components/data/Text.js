@@ -18,7 +18,16 @@ module.exports = {
             }
         },
         Home: {
-
+            Headings: {
+                main: "Shape the way autonomous vehicles are designed",
+                sub: "Ethics Engine is a platform designed to measure public opinion of autonomous driving and the moral challenges it faces."
+            },
+            Paragraphs: {
+                main: "The quiz will show you a series of moral dilemmas involving an autonomous vehicle. You will choose how the autonomous vehicle should act in each situation. Afterwards, you'll be shown your responses compared to the average of all others."
+            },
+            Buttons: {
+                start: "Start Quiz"
+            }
         },
         Methodology: {
             Headings: {
@@ -36,7 +45,22 @@ module.exports = {
             }
         },
         Quiz: {
-
+            Headings: {
+                scenario: "Scenario",
+                instructions: "Instructions",
+                measured: "What's Being Measured?"
+            },
+            Paragraphs: {
+                scenario: "Suppose that an autonomous vehicle (AV) is driving in heavy rain when the AV suddenly detects two groups of pedestrians in its path. Sadly, it's unable to stop in time due to the low visibility and slippery roads. It must make a choice between staying its course or swerving into the other group of pedestrians. The scenario may also involve choosing between saving the pedestrians or the passengers. Either way, the AV must decide between two unfortunate outcomes. The purpose of this quiz is to gather your opinion on which outcomes the AV should choose.",
+                instructions: "You will first answer each question as an impartial judge. Imagine the scenario as if you're watching safely from a nearby sidewalk, and can control what decision the car will make. Next, you'll indicate whether or not your decision would change if you were a passenger of the car. After answering ten questions, you'll receive an analytics report that compares your decisions to those of all other participants.",
+                measured1: "Action vs. Inaction - It's important to make the distinction between staying the course and swerving. By swerving, you're taking action by driving into the other pedestrians. By staying in your lane, you're choosing inaction by driving into the pedestrians already in your way.",
+                measured2: "Saving More vs. Saving Less - This will measure how heavily you prefer saving more lives over all else.",
+                measured3: "Pedestrians vs. Passengers - Some scenarios will feature a choice between hitting a group of pedestrians or sacrificing the passengers by hitting a barrier. These scenarios will measure your preference for which group you'd rather save.",
+                measured4: "Known vs. Unknown - Other scenarios will feature a choice between hitting a known number of pedestrians, or moving into an opposite lane with an unknown number of pedestrians, if any.",
+            },
+            Buttons: {
+                start: "Start Quiz"
+            }
         },
         Results: {
             Headings: {

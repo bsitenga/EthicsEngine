@@ -83,14 +83,10 @@ class Home extends React.Component {
             <Container fluid id="home-fluid">
                 <Row>
                     <Col lg={6} >
-                        <h1>Shape the way autonomous vehicles are designed</h1>
-                        <h6>Ethics Engine is a platform designed to measure public opinion of
-                            autonomous driving and the moral challenges it faces.</h6>
-                        <p>The quiz will show you a series of moral dilemmas involving an
-                        autonomous vehicle. You will choose how the autonomous vehicle
-                        should act in each situation. Afterwards, you'll be shown your
-                            responses compared to the average of all others.</p>
-                        <Link to="/quiz"><button>Start Quiz</button></Link>
+                        <h1>{Text["English"].Home.Headings.main}</h1>
+                        <h6>{Text["English"].Home.Headings.sub}</h6>
+                        <p>{Text["English"].Home.Paragraphs.main}</p>
+                        <Link to="/quiz"><button>{Text["English"].Home.Buttons.start}</button></Link>
                     </Col>
                     <Col lg={6} >
                         <Radar data={{
