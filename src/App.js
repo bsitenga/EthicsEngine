@@ -16,6 +16,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 function App() {
   const [language, setLanguage] = useState("English");
 
+  //Sets dropdown title for languages that don't use the Latin alphabet
+  const setDropdown = () => {
+    if (language === "Korean") {
+      return "한국어"
+    }
+    return language;
+  }
+
   return (
     <main>
       <Navbar bg="light" variant="light" className="center" >
@@ -24,7 +32,7 @@ function App() {
           <Nav.Link href="quiz">{Text[language].Navigation.Quiz}</Nav.Link>
           <Nav.Link href="about">{Text[language].Navigation.About}</Nav.Link>
           <Nav.Link href="methodology">{Text[language].Navigation.Methodology}</Nav.Link>
-          <NavDropdown title={language} id="language-selector">
+          <NavDropdown title={setDropdown()} id="language-selector">
             <NavDropdown.Item onClick={() => setLanguage("English")}>English</NavDropdown.Item>
             <NavDropdown.Item onClick={() => setLanguage("Korean")}>한국어</NavDropdown.Item>
           </NavDropdown>
@@ -34,10 +42,18 @@ function App() {
         <Route path="/" render={(props) => (
           <Home {...props} language={language} />
         )} exact />
-        <Route path="/quiz" component={Quiz} />
-        <Route path="/results" component={Results} />
-        <Route path="/about" component={About} />
-        <Route path="/methodology" component={Methodology} />
+        <Route path="/quiz" render={(props) => (
+          <Quiz {...props} language={language} />
+        )} />
+        <Route path="/results" render={(props) => (
+          <Results {...props} language={language} />
+        )} />
+        <Route path="/about" render={(props) => (
+          <About {...props} language={language} />
+        )} />
+        <Route path="/methodology" render={(props) => (
+          <Methodology {...props} language={language} />
+        )} />
         <Route component={Error} />
       </Switch>
     </main>

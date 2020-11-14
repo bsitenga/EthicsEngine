@@ -94,10 +94,10 @@ class Home extends React.Component {
                     </Col>
                     <Col lg={6} >
                         <Radar data={{
-                            labels: [Text["English"].Radar.Labels.more, Text["English"].Radar.Labels.less, Text["English"].Radar.Labels.action, Text["English"].Radar.Labels.inaction, Text["English"].Radar.Labels.known, Text["English"].Radar.Labels.unknown, Text["English"].Radar.Labels.pedestrians, Text["English"].Radar.Labels.passengers],
+                            labels: [Text[this.props.language].Radar.Labels.more, Text[this.props.language].Radar.Labels.less, Text[this.props.language].Radar.Labels.action, Text[this.props.language].Radar.Labels.inaction, Text[this.props.language].Radar.Labels.known, Text[this.props.language].Radar.Labels.unknown, Text[this.props.language].Radar.Labels.pedestrians, Text[this.props.language].Radar.Labels.passengers],
                             datasets: [
                                 {
-                                    label: Text["English"].Radar.Headings.you,
+                                    label: Text[this.props.language].Radar.Headings.you,
                                     data: [this.state.rData.more, this.state.rData.less, this.state.rData.action, this.state.rData.inaction,
                                     this.state.rData.known, this.state.rData.unknown, this.state.rData.pedestrians, this.state.rData.passengers],
                                     backgroundColor: 'rgb(255, 103, 135, .3)',
@@ -106,7 +106,7 @@ class Home extends React.Component {
                                     pointBorderColor: '#FFFFFF'
                                 },
                                 {
-                                    label: Text["English"].Radar.Headings.average,
+                                    label: Text[this.props.language].Radar.Headings.average,
                                     data: [(this.state.aData.more / Totals.more).toFixed(2), (this.state.aData.less / Totals.less).toFixed(2), (this.state.aData.action / Totals.action).toFixed(2), (this.state.aData.inaction / Totals.inaction).toFixed(2),
                                     (this.state.aData.known / Totals.known).toFixed(2), (this.state.aData.unknown / Totals.unknown).toFixed(2), (this.state.aData.pedestrians / Totals.pedestrians).toFixed(2), (this.state.aData.passengers / Totals.passengers).toFixed(2)],
                                     backgroundColor: 'rgb(54, 162, 235, .3)',

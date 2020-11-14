@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 
 //Quiz Page and generates user results upon completion of quiz
-function Quiz() {
+function Quiz(props) {
   const [questionCount, setQuestionCount] = useState(0);
   const [allAnswers, setAllAnswers] = useState({ more: 0, less: 0, action: 0, inaction: 0, known: 0, unknown: 0, pedestrians: 0, passengers: 0 });
   const [answers, setAnswers] = useState([0, 0]);
@@ -61,29 +61,29 @@ function Quiz() {
 
   return (
     <div className="quiz-container">
-      {finished ? <Results userPrefs={allAnswers} /> : <Container>
+      {finished ? <Results userPrefs={allAnswers} language={props.language}/> : <Container>
         <Row>
           <Col>
             {questionCount === 0 ?
               <div className="instructions" >
-                <h4>{Text["English"].Quiz.Headings.scenario}</h4>
-                <p>{Text["English"].Quiz.Paragraphs.scenario}</p>
-                <h4>{Text["English"].Quiz.Headings.instructions}</h4>
-                <p>{Text["English"].Quiz.Paragraphs.instructions}</p>
-                <h4>{Text["English"].Quiz.Headings.measured}</h4>
-                <p>{Text["English"].Quiz.Paragraphs.measured1}</p>
-                <p>{Text["English"].Quiz.Paragraphs.measured2}</p>
-                <p>{Text["English"].Quiz.Paragraphs.measured3}</p>
-                <p>{Text["English"].Quiz.Paragraphs.measured4}</p>
-                <button onClick={() => setQuestionCount(1)} >{Text["English"].Quiz.Buttons.start}</button>
+                <h4>{Text[props.language].Quiz.Headings.scenario}</h4>
+                <p>{Text[props.language].Quiz.Paragraphs.scenario}</p>
+                <h4>{Text[props.language].Quiz.Headings.instructions}</h4>
+                <p>{Text[props.language].Quiz.Paragraphs.instructions}</p>
+                <h4>{Text[props.language].Quiz.Headings.measured}</h4>
+                <p>{Text[props.language].Quiz.Paragraphs.measured1}</p>
+                <p>{Text[props.language].Quiz.Paragraphs.measured2}</p>
+                <p>{Text[props.language].Quiz.Paragraphs.measured3}</p>
+                <p>{Text[props.language].Quiz.Paragraphs.measured4}</p>
+                <button onClick={() => setQuestionCount(1)} >{Text[props.language].Quiz.Buttons.start}</button>
               </div>
               :
               <div className="question">
-                <h4>Question {questionCount}/10</h4>
-                <p className="extra-info" >Scenario Info</p>
+                <h4>{Text[props.language].Quiz.Headings.question} {questionCount}/10</h4>
+                <p className="extra-info" >{Text[props.language].Quiz.Headings.info}</p>
                 <Row>
                   <Col>
-                    <h6>As an impartial observer, should the car</h6>
+                    <h6>{Text[props.language].Quiz.Paragraphs.impartial}</h6>
                   </Col>
                 </Row>
                 <Row className="first-question" >
@@ -91,7 +91,7 @@ function Quiz() {
                     <p>{scenarios[questionCount - 1].Left}</p>
                   </Col>
                   <Col xs={2} >
-                    <p>or</p>
+                    <p>{Text[props.language].Quiz.Paragraphs.or}</p>
                   </Col>
                   <Col onClick={() => chooseAnswer(1, "right")} xs={5} className={answers[0] === 2 ? "active answer" : "answer"} >
                     <p>{scenarios[questionCount - 1].Right}</p>
@@ -99,7 +99,7 @@ function Quiz() {
                 </Row>
                 <Row>
                   <Col>
-                    <h6>As a passenger, should the car</h6>
+                    <h6>{Text[props.language].Quiz.Paragraphs.passenger}</h6>
                   </Col>
                 </Row>
                 <Row className="second-question">
@@ -107,16 +107,16 @@ function Quiz() {
                     <p>{scenarios[questionCount - 1].Left}</p>
                   </Col>
                   <Col xs={2} >
-                    <p>or</p>
+                    <p>{Text[props.language].Quiz.Paragraphs.or}</p>
                   </Col>
                   <Col onClick={() => chooseAnswer(2, "right")} xs={5} className={answers[1] === 2 ? "active answer" : "answer"} >
                     <p>{scenarios[questionCount - 1].Right}</p>
                   </Col>
                 </Row>
                 {questionCount !== 10 ?
-                  <button onClick={() => nextQuestion()} >Next</button>
+                  <button onClick={() => nextQuestion()} >{Text[props.language].Quiz.Buttons.next}</button>
                   :
-                  <button onClick={() => nextQuestion()}>See Results</button>}
+                  <button onClick={() => nextQuestion()}>{Text[props.language].Quiz.Buttons.results}</button>}
               </div>}
           </Col>
         </Row>
