@@ -14,7 +14,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 //Main Component with Navbar and React Router
 function App() {
-  const [language, setLanguage] = useState("English");
+  const [language, setLanguage] = useState(localStorage.getItem('ethicsLang') || "English");
 
   //Sets dropdown title for languages that don't use the Latin alphabet
   const setDropdown = () => {
@@ -22,6 +22,11 @@ function App() {
       return "한국어"
     }
     return language;
+  }
+
+  const changeLanguage = (lang) => {
+    setLanguage(lang);
+    localStorage.setItem('ethicsLang', lang)
   }
 
   return (
@@ -33,8 +38,8 @@ function App() {
           <Nav.Link href="about">{Text[language].Navigation.About}</Nav.Link>
           <Nav.Link href="methodology">{Text[language].Navigation.Methodology}</Nav.Link>
           <NavDropdown title={setDropdown()} id="language-selector">
-            <NavDropdown.Item onClick={() => setLanguage("English")}>English</NavDropdown.Item>
-            <NavDropdown.Item onClick={() => setLanguage("Korean")}>한국어</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => changeLanguage("English")}>English</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => changeLanguage("Korean")}>한국어</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar>
