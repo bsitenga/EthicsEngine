@@ -67,7 +67,8 @@ module.exports = {
                 measured4: "Known vs. Unknown - Other scenarios will feature a choice between hitting a known number of pedestrians, or moving into an opposite lane with an unknown number of pedestrians, if any.",
                 impartial: "As an impartial observer, should the car",
                 passenger: "As a passenger, should the car",
-                or: "or"
+                or: "or",
+                error: "Please answer both questions."
             },
             Buttons: {
                 start: "Start Quiz",
@@ -173,6 +174,7 @@ module.exports = {
                 impartial: "공정한 관찰자로서 차는 무엇을해야합니까?",
                 passenger: "승객으로서 자동차는 무엇을해야합니까?",
                 or: "또는",
+                error: "두 가지 질문에 모두 답하십시오.",
             },
             Buttons: {
                 start: "퀴즈 시작",

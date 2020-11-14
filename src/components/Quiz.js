@@ -12,6 +12,7 @@ function Quiz(props) {
   const [allAnswers, setAllAnswers] = useState({ more: 0, less: 0, action: 0, inaction: 0, known: 0, unknown: 0, pedestrians: 0, passengers: 0 });
   const [answers, setAnswers] = useState([0, 0]);
   const [finished, setFinished] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   //import scenario and normalization information
   const scenarios = require('./data/Scenarios.js');
@@ -31,37 +32,42 @@ function Quiz(props) {
   //adds answers to state and goes to next question
   const nextQuestion = () => {
     let answerCopy = answers.slice();
-    let allAnswerCopy = Object.assign({}, allAnswers)
+    if (answerCopy[0] === 0 || answerCopy[1] === 0) {
+      setErrorMessage(Text[props.language].Quiz.Paragraphs.error);
+    } else {
+      let allAnswerCopy = Object.assign({}, allAnswers)
 
-    for (let key in allAnswerCopy) {
-      if (answerCopy[0] === 1) {
-        allAnswerCopy[key] += measurements[questionCount - 1].Left[key];
-      } else {
-        allAnswerCopy[key] += measurements[questionCount - 1].Right[key];
+      for (let key in allAnswerCopy) {
+        if (answerCopy[0] === 1) {
+          allAnswerCopy[key] += measurements[questionCount - 1].Left[key];
+        } else {
+          allAnswerCopy[key] += measurements[questionCount - 1].Right[key];
+        }
+        if (answerCopy[1] === 1) {
+          allAnswerCopy[key] += measurements[questionCount - 1].Left[key];
+        } else {
+          allAnswerCopy[key] += measurements[questionCount - 1].Right[key];
+        }
       }
-      if (answerCopy[1] === 1) {
-        allAnswerCopy[key] += measurements[questionCount - 1].Left[key];
-      } else {
-        allAnswerCopy[key] += measurements[questionCount - 1].Right[key];
-      }
-    }
 
-    //If last question, send user preferences to mongodb
-    if (questionCount === 10) {
-      axios.post('https://ethicsenginebackend.herokuapp.com/preferences', allAnswerCopy)
-        .then(res => console.log(res.data))
-      axios.post('https://ethicsenginebackend.herokuapp.com/summary', allAnswerCopy)
-        .then(res => console.log(res.data))
-      setFinished(true);
+      //If last question, send user preferences to mongodb
+      if (questionCount === 10) {
+        axios.post('https://ethicsenginebackend.herokuapp.com/preferences', allAnswerCopy)
+          .then(res => console.log(res.data))
+        axios.post('https://ethicsenginebackend.herokuapp.com/summary', allAnswerCopy)
+          .then(res => console.log(res.data))
+        setFinished(true);
+      }
+      setAllAnswers(allAnswerCopy);
+      setAnswers([0, 0]);
+      setQuestionCount(questionCount + 1);
+      setErrorMessage("");
     }
-    setAllAnswers(allAnswerCopy);
-    setAnswers([0, 0]);
-    setQuestionCount(questionCount + 1)
   }
 
   return (
     <div className="quiz-container">
-      {finished ? <Results userPrefs={allAnswers} language={props.language}/> : <Container>
+      {finished ? <Results userPrefs={allAnswers} language={props.language} /> : <Container>
         <Row>
           <Col>
             {questionCount === 0 ?
@@ -81,6 +87,7 @@ function Quiz(props) {
               <div className="question">
                 <h4>{Text[props.language].Quiz.Headings.question} {questionCount}/10</h4>
                 <p className="extra-info" >{Text[props.language].Quiz.Headings.info}</p>
+                <p>{errorMessage}</p>
                 <Row>
                   <Col>
                     <h6>{Text[props.language].Quiz.Paragraphs.impartial}</h6>
