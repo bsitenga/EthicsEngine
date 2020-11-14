@@ -88,13 +88,13 @@ function Quiz(props) {
                 </Row>
                 <Row className="first-question" >
                   <Col onClick={() => chooseAnswer(1, "left")} xs={5} className={answers[0] === 1 ? "active answer" : "answer"} >
-                    <p>{scenarios[questionCount - 1].Left}</p>
+                    <p>{scenarios[props.language][questionCount - 1].Left}</p>
                   </Col>
                   <Col xs={2} >
                     <p>{Text[props.language].Quiz.Paragraphs.or}</p>
                   </Col>
                   <Col onClick={() => chooseAnswer(1, "right")} xs={5} className={answers[0] === 2 ? "active answer" : "answer"} >
-                    <p>{scenarios[questionCount - 1].Right}</p>
+                    <p>{scenarios[props.language][questionCount - 1].Right}</p>
                   </Col>
                 </Row>
                 <Row>
@@ -104,13 +104,13 @@ function Quiz(props) {
                 </Row>
                 <Row className="second-question">
                   <Col onClick={() => chooseAnswer(2, "left")} xs={5} className={answers[1] === 1 ? "active answer" : "answer"} >
-                    <p>{scenarios[questionCount - 1].Left}</p>
+                    <p>{scenarios[props.language][questionCount - 1].Left}</p>
                   </Col>
                   <Col xs={2} >
                     <p>{Text[props.language].Quiz.Paragraphs.or}</p>
                   </Col>
                   <Col onClick={() => chooseAnswer(2, "right")} xs={5} className={answers[1] === 2 ? "active answer" : "answer"} >
-                    <p>{scenarios[questionCount - 1].Right}</p>
+                    <p>{scenarios[props.language][questionCount - 1].Right}</p>
                   </Col>
                 </Row>
                 {questionCount !== 10 ?

@@ -102,8 +102,8 @@ class Results extends React.Component {
               <div className="results-text" >
                 <h4>{Text[this.props.language].Results.Headings.Matters}</h4>
                 <div>
-                  <p>{Matters.most[this.state.rankings[0].type]}</p>
-                  <p>{Matters.most[this.state.rankings[1].type]}</p>
+                  <p>{Matters[this.props.language].most[this.state.rankings[0].type]}</p>
+                  <p>{Matters[this.props.language].most[this.state.rankings[1].type]}</p>
                 </div>
                 <h4>{Text[this.props.language].Results.Headings.AVFacts}</h4>
                 <p><a href="https://www.nhtsa.gov/sites/nhtsa.dot.gov/files/documents/13069a-ads2.0_090617_v9a_tag.pdf" target="_blank" >{Text[this.props.language].Results.Paragraphs.AVFacts1}</a></p>
