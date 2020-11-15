@@ -4,6 +4,7 @@ import Text from './data/Text';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 
 //Quiz Page and generates user results upon completion of quiz
@@ -13,6 +14,7 @@ function Quiz(props) {
   const [answers, setAnswers] = useState([0, 0]);
   const [finished, setFinished] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [show, setShow] = useState(false);
 
   //import scenario and normalization information
   const scenarios = require('./data/Scenarios.js');
@@ -65,6 +67,9 @@ function Quiz(props) {
     }
   }
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div className="quiz-container">
       {finished ? <Results userPrefs={allAnswers} language={props.language} /> : <Container>
@@ -86,7 +91,18 @@ function Quiz(props) {
               :
               <div className="question">
                 <h4>{Text[props.language].Quiz.Headings.question} {questionCount}/10</h4>
-                <p className="extra-info" >{Text[props.language].Quiz.Headings.info}</p>
+                <p className="extra-info" onClick={handleShow} >{Text[props.language].Quiz.Headings.info}</p>
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>{Text[props.language].Quiz.Headings.info}</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>{Text[props.language].Quiz.Paragraphs.sceneInfo}</Modal.Body>
+                  <Modal.Footer>
+                    <button className="modal-button" onClick={handleClose}>
+                      {Text[props.language].Quiz.Buttons.close}
+                    </button>
+                  </Modal.Footer>
+                </Modal>
                 <p>{errorMessage}</p>
                 <Row>
                   <Col>

@@ -195,6 +195,18 @@
     outline: none;
 }
 
+.modal-button {
+    font-size: calc(14px + .6vw);
+    color: #fff;
+    border: none;
+    background-color: var(--highlights);
+    padding: calc(5px + .2vw) calc(18px + .6vw);
+}
+
+.modal-button:hover {
+    background-color: var(--light-highlights);
+}
+
 /* RESULTS */
 .radar-chart-container {
     width: 50vw;

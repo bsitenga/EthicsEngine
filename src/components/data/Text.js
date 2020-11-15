@@ -68,12 +68,14 @@ module.exports = {
                 impartial: "As an impartial observer, should the car",
                 passenger: "As a passenger, should the car",
                 or: "or",
-                error: "Please answer both questions."
+                error: "Please answer both questions.",
+                sceneInfo: "Imagine an autonomous car is driving down the road in heavy rain. The visibility is low, and it detects pedestrian(s), a barricade, or an unidentifiable object in its way far too late to brake. To avoid this, it determines that the only course of action is to swerve left into the adjacent lane, but similarly detects pedestrians, a barricade, or an unidentifiable object in that lane. You must choose how you want this and all other autonomous cars to act in this scenario, first as an innocent bystander, and second as a passenger of the car.",
             },
             Buttons: {
                 start: "Start Quiz",
                 next: "Next",
-                results: "See Results"
+                results: "See Results",
+                close: "Close"
             }
         },
         Results: {
@@ -175,11 +177,13 @@ module.exports = {
                 passenger: "승객으로서 자동차는 무엇을해야합니까?",
                 or: "또는",
                 error: "두 가지 질문에 모두 답하십시오.",
+                sceneInfo: "폭우 속에서 자율 주행 차가 도로를 주행한다고 상상해보십시오. 시야가 낮고 보행자, 바리케이드 또는 식별 할 수없는 물체가 너무 늦게 제동 할 수없는 것을 감지합니다. 이를 방지하기 위해 유일한 조치는 인접한 차선으로 좌회전하는 것이라고 판단하지만, 마찬가지로 보행자, 바리케이드 또는 해당 차선에서 식별 할 수없는 물체를 감지합니다. 이 시나리오에서이 시나리오와 다른 모든 자율 주행 자동차가 어떻게 행동 할지를 선택해야합니다. 먼저 무고한 방관자, 두 번째는 자동차 승객으로 행동해야합니다.",
             },
             Buttons: {
                 start: "퀴즈 시작",
                 next: "다음",
                 results: "결과보기",
+                close: "닫기"
             }
         },
         Results: {
