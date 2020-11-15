@@ -69,7 +69,7 @@ module.exports = {
                 passenger: "As a passenger, should the car",
                 or: "or",
                 error: "Please answer both questions.",
-                sceneInfo: "Imagine an autonomous car is driving down the road in heavy rain. The visibility is low, and it detects pedestrian(s), a barricade, or an unidentifiable object in its way far too late to brake. To avoid this, it determines that the only course of action is to swerve left into the adjacent lane, but similarly detects pedestrians, a barricade, or an unidentifiable object in that lane. You must choose how you want this and all other autonomous cars to act in this scenario, first as an innocent bystander, and second as a passenger of the car.",
+                sceneInfo: "Imagine an autonomous car is driving down the road in heavy rain. The visibility is low, and it detects pedestrian(s), a barricade, or an unidentifiable object in its way far too late to brake. To avoid this, it determines that the only course of action is to swerve left into the adjacent lane, but similarly detects pedestrians, a barricade, or an unidentifiable object in that lane. You must choose how you want this and all other autonomous cars to act in this scenario, first as an innocent bystander, and second as a passenger of the car. Assume the car is a five-seater with an average of three passengers.",
             },
             Buttons: {
                 start: "Start Quiz",

@@ -1,6 +1,6 @@
 module.exports = {
-    more: 6,
-    less: 6,
+    more: 8,
+    less: 8,
     action: 20,
     inaction: 20,
     known: 8,
