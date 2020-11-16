@@ -20,7 +20,8 @@ module.exports = {
                 Frontend: "Frontend Technologies: Bootstrap, Chart.js, CSS, HTML, React, React Router",
                 Backend: "Backend Technologies: Axios, Express.js, MongoDB, Mongoose, Node.js",
                 AboutMe: "Hi! My name is Brian and I’m a web developer and student at the University of Southern California. I created Ethics Engine to gather and share data about ethical decision making in response to the rise of autonomous driving. On a broader level, I made this website because I’m concerned with the pace of technological advancement especially when compared to the slow pace of public policy. I believe that developers have a growing responsibility to set the standard for new technology that we create in the absence of government regulation. In some way, I hope to contribute to this culture of responsible development by making websites that question and explore the ethical ramifications of new technology. To stay true to my development philosophy, the Ethics Engine frontend is completely open-source under the MIT License. If you see any way to make this site more accessible, inclusive, or user-friendly, I urge you to contact me or contribute to the repository linked below.",
-                Repository: "Repository"
+                Repository: "Repository",
+                Research: "Research Paper"
             }
         },
         Home: {
@@ -129,6 +130,7 @@ module.exports = {
                 Backend: "백엔드 기술 : Axios, Express.js, MongoDB, Mongoose, Node.js",
                 AboutMe: "안녕하세요! 제 이름은 Brian이고 University of Southern California의 웹 개발자이자 학생입니다. 자율 주행의 부상에 대응하여 윤리적 의사 결정에 대한 데이터를 수집하고 공유하기 위해 Ethics Engine을 만들었습니다. 더 넓은 차원에서 저는 특히 느린 속도의 공공 정책과 비교할 때 기술 발전 속도에 관심이 있기 때문에이 웹 사이트를 만들었습니다. 저는 개발자들이 정부 규제없이 우리가 만드는 신기술의 표준을 설정해야 할 책임이 커지고 있다고 생각합니다. 어떤면에서 저는 신기술의 윤리적 파급 효과에 대해 질문하고 탐구하는 웹 사이트를 만들어 책임있는 개발 문화에 기여하고자합니다. 제 개발 철학에 충실하기 위해 Ethics Engine 프런트 엔드는 MIT 라이선스에 따라 완전히 오픈 소스입니다. 이 사이트를보다 접근 가능하고 포괄적이거나 사용자 친화적으로 만드는 방법을 찾으면 저에게 연락하거나 아래 링크 된 저장소에 기여할 것을 촉구합니다.",
                 Repository: "저장소",
+                Research: "연구 논문"
             }
         },
         Home: {
