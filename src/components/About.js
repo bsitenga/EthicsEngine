@@ -8,7 +8,7 @@ function About(props) {
       <Container>
         <h3>{Text[props.language].About.Headings.EthicsEngine}</h3>
         <p>{Text[props.language].About.Paragraphs.EthicsEngine}</p>
-        <p className="research-link"><a href="research_paper.pdf" target="_blank">{Text[props.language].About.Paragraphs.Research}</a></p>
+        <p className="research-link"><a href="https://drive.google.com/file/d/1LhiQgHDw-XOj5mqO6QpdWZofs4ZH05_X/view?usp=sharing" target="_blank">{Text[props.language].About.Paragraphs.Research}</a></p>
         <h3>{Text[props.language].About.Headings.Motivation}</h3>
         <p>{Text[props.language].About.Paragraphs.Motivation}</p>
         <h3>{Text[props.language].About.Headings.Development}</h3>
